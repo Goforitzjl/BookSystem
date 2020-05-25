@@ -132,7 +132,7 @@ public class Register extends JDialog {
     }
 
     public void addUser() {
-        User user = new User();
+        LUser user = new LUser();
         user.setAge(Integer.valueOf(iage.getText()));
         user.setName(iname.getText());
         user.setGender(igender.getText());

@@ -14,10 +14,12 @@ public class UsersDao {
         dbc = DBCbyc3p0.getInstance();
     }
 
-    public int addUser(User user) {
+
+    //增加登录用户
+    public int addUser(LUser user) {
         int row_count = -1;
         ResultSet rs = null;
-        String sql = "INSERT INTO USERS(UNAME,AGE,GENDER,PASSWORD,TEL,ADDRESS,ISSUPERUSER) "
+        String sql = "INSERT INTO LUSER(NAME,AGE,GENDER,PASSWORD,TEL,ADDRESS,IS_SUPERUSER) "
                 + "VALUES(?,?,?,?,?,?,?)";
 
         try (Connection con = dbc.getConnection();  //自动关闭资源
@@ -37,10 +39,11 @@ public class UsersDao {
     }
 
 
-    public boolean checkUser(User user) {
+    //校验登录用户
+    public boolean checkUser(LUser user) {
         boolean flag=false;
         ResultSet rs = null;
-        String sql = "SELECT * FROM USERS WHERE UNAME=? AND PASSWORD=?";
+        String sql = "SELECT * FROM LUSER WHERE NAME=? AND PASSWORD=?";
         try (Connection con = dbc.getConnection();
              PreparedStatement psmt = con.prepareStatement(sql)) {
             psmt.setString(1, user.getName());
@@ -56,23 +59,24 @@ public class UsersDao {
         return flag;
     }
 
-    public Vector<User> UserList() {
-        Vector<User> list = new Vector<User>();
+    //打印所有登录用户
+    public Vector<LUser> UserList() {
+        Vector<LUser> list = new Vector<LUser>();
         ResultSet rs = null;
-        String sql = "SELECT * FROM USERS";
+        String sql = "SELECT * FROM LUSER";
         try (Connection con = dbc.getConnection();
              PreparedStatement psmt = con.prepareStatement(sql);) {
             rs = psmt.executeQuery();
             while (rs.next()) {
                 int uid = rs.getInt(1);
-                String uname = rs.getString(2);
-                String password = rs.getString(3);
-                int age = rs.getInt(4);
+                String uname = rs.getString(3);
+                String password = rs.getString(4);
+                int age = rs.getInt(2);
                 String gender = rs.getString(5);
                 String tel = rs.getString(6);
                 String address = rs.getString(7);
                 boolean is_super = rs.getBoolean(8);
-                User user = new User();
+                LUser user = new LUser();
                 user.setId(uid);
                 user.setName(uname);
                 user.setPassword(password);

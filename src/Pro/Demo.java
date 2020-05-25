@@ -1,6 +1,8 @@
 package Pro;
 
-import java.sql.SQLOutput;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -9,27 +11,55 @@ public class Demo {
     public static void main(String[] args) {
 
 //
-//        User user = new User(1, 20, "zhang",
-//                "1234", "male", "13551860651",
+//        LUser user = new LUser(1, 20, "zhang",
+//                "1234", "男", "13551860651",
 //                "四川成都",true);
 
 
-        User user = new User(2,21, "lvxinran",
-                "654321", "female", "19983411198",
-                "乌鲁木齐",true);
-        UsersDao uo=new UsersDao();
+//        LUser user = new LUser(2,21, "lvxinran",
+//                "654321", "女", "19983411198",
+//                "乌鲁木齐",true);
+//        UsersDao uo=new UsersDao();
 //        int i=uo.addUser(user);
 //        System.out.println(i);
 //
-        boolean flag = uo.checkUser(user);
-        System.out.println(flag);
+//        boolean flag = uo.checkUser(user);
+//        System.out.println(flag);
 
-//        Vector<User> users =uo.UserList();
+//        Vector<LUser> users =uo.UserList();
 //        Iterator it = users.iterator();
 //        while(it.hasNext()){
-//            User user=(User)it.next();
+//            LUser user=(LUser)it.next();
 //            System.out.println(user.getName());
 //
 //        }
+//
+//        final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        System.out.println(df.format(new Date()));
+        Date p_t=new Date();
+//        System.out.println(p_t);
+        Date c_t=new Date(2018,06,9);
+        Date u_t=new Date(2020,10,1);
+//
+//
+//        final Book book = new Book("PHP1", "ERIC MATTHES", "程序设计", "978-7-115-42802-8", "人民邮电出版社", 89.0f, c_t, p_t, u_t);
+        final BooksDao booksDao = new BooksDao();
+//        final int i = booksDao.addBook(book);
+//        System.out.println(i);
+//
+//        final Date date = new Date();
+//        final Timestamp timestamp = new Timestamp(date.getTime());
+//        System.out.println(timestamp);
+//        final Book book = new Book(2,"PHP1", "ERIC MATTHES", "程序设计", "978-7-115-42802-8", "人民邮电出版社", 89.0f, c_t, p_t, u_t);
+
+        final Vector<Book> books = booksDao.selectBook("MA");
+//        final Vector<Book> books = booksDao.getBookList();
+        Iterator it=books.iterator();
+        while(it.hasNext()){
+            Book book1 = (Book)it.next();
+            System.out.println(book1.getBook_name());
+        }
+
+
     }
 }

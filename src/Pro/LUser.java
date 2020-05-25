@@ -1,6 +1,6 @@
 package Pro;
 
-public class User {
+public class LUser {
     private int id;
     private int age;
     private String name;
@@ -10,10 +10,10 @@ public class User {
     private String address;
     private boolean is_superuser;
 
-    public User() {
+    public LUser() {
     }
 
-    public User(int id, int age, String name, String password, String gender, String tel, String address, boolean is_superuser) {
+    public LUser(int id, int age, String name, String password, String gender, String tel, String address, boolean is_superuser) {
         this.id = id;
         this.age = age;
         this.name = name;
@@ -24,7 +24,7 @@ public class User {
         this.is_superuser = is_superuser;
     }
 
-    public User(int age, String name, String password, String gender, String tel, String address, boolean is_superuser, Role role) {
+    public LUser(int age, String name, String password, String gender, String tel, String address, boolean is_superuser) {
         this.age = age;
         this.name = name;
         this.password = password;
@@ -32,10 +32,10 @@ public class User {
         this.tel = tel;
         this.address = address;
         this.is_superuser = is_superuser;
-        this.role = role;
+
     }
 
-    public User(String name, String password) {
+    public LUser(String name, String password) {
         this.name = name;
         this.password = password;
     }
@@ -80,13 +80,13 @@ public class User {
         this.address = address;
     }
 
-    private Role role;
 
-    public User(int id, String name, String password, Role role) {
+
+    public LUser(int id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.role = role;
+
     }
 
 

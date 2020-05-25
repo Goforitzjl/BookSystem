@@ -87,7 +87,7 @@ public class Login extends JFrame {
     }
 
     public void login() {
-        User user = new User();
+        LUser user = new LUser();
         user.setName(iname.getText());
         user.setPassword(String.valueOf(ipwd.getPassword()));
         boolean flag = new UsersDao().checkUser(user);
