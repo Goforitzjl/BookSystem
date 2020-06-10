@@ -7,10 +7,20 @@ import java.util.Vector;
 public class BooksDao {
 
     private DBCbyc3p0 dbc;
+    private static BooksDao db;
 
-    public BooksDao() {
+    private BooksDao() {
         dbc = DBCbyc3p0.getInstance();
     }
+
+    public static BooksDao getInstance(){
+        if(db==null){
+            db=new BooksDao();
+        }
+        return db;
+    }
+
+
 
     //增加图书
     public int addBook(Book book) {
@@ -145,6 +155,44 @@ public class BooksDao {
         }
         return bookList;
 
+    }
+
+    public int getIdbyname(String name){
+        int id=-1;
+        ResultSet rs=null;
+        String sql="SELECT BOOK_ID FROM book WHERE BOOK_NAME = ?";
+        try(Connection con=dbc.getConnection();
+            PreparedStatement psmt=con.prepareStatement(sql)){
+            psmt.setString(1,name);
+            rs=psmt.executeQuery();
+            while(rs.next()){
+                id=rs.getInt(1);
+            }
+        }catch (SQLException e){
+            id=-1;
+        }
+        return id;
+    }
+
+    public Book selectBookById(int id){
+
+        Book book=null;
+        ResultSet rs=null;
+        String sql="SELECT * FROM BOOK WHERE BOOK_ID =?";
+        try(Connection con=dbc.getConnection();
+        PreparedStatement psmt=con.prepareStatement(sql)){
+            psmt.setInt(1,id);
+            rs=psmt.executeQuery();
+            while(rs.next()){
+                String name=rs.getString(2);
+                String barcode=rs.getString(5);
+                book=new Book(name,barcode);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    return book;
     }
 
 

@@ -14,6 +14,10 @@ public class BookTableModel extends DefaultTableModel {
         this.name = name;
     }
 
+    public BookTableModel(){
+
+    }
+
     public Vector<Vector<String>> getData() {
         return data;
     }

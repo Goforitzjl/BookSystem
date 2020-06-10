@@ -47,11 +47,11 @@ public class BookEditDialog extends JDialog implements ActionListener {
     JButton save;
     JButton cancel;
 
-    Index parent;
+    BookSysMainUi parent;
     String title;
     int id;
 
-    public BookEditDialog(Index parent, String title) {
+    public BookEditDialog(BookSysMainUi parent, String title) {
         super(parent, title, true);
         this.parent = parent;
         this.title = title;
@@ -179,11 +179,11 @@ public class BookEditDialog extends JDialog implements ActionListener {
                 }
                 if (this.title.equals("更新图书")) {
                     Book book1 = new Book(this.id,name, authors, category, barcode, publisher, price, publish_time, create_time, update_time);
-                    count=new BooksDao().updateBook(book1);
+                    count=BooksDao.getInstance().updateBook(book1);
                 }
                 else if (this.title.equals("添加图书")) {
                     Book book2 = new Book(name, authors, category, barcode, publisher, price, publish_time, create_time, update_time);
-                    count = new BooksDao().addBook(book2);  //
+                    count = BooksDao.getInstance().addBook(book2);  //
                 }
 
 
@@ -191,7 +191,7 @@ public class BookEditDialog extends JDialog implements ActionListener {
                     JOptionPane.showMessageDialog(this, "保存失败", "提示", JOptionPane.ERROR_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(this, "保存成功", "提示", JOptionPane.PLAIN_MESSAGE);
-                    this.parent.refreshDatas();
+//                    this.parent.parent.refreshBookDatas();
                     this.dispose();
                 }
                 break;

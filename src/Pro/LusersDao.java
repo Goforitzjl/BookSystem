@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class UsersDao {
+public class LusersDao {
 
     private DBCbyc3p0 dbc;
 
-    public UsersDao() {
+    public LusersDao() {
         dbc = DBCbyc3p0.getInstance();
     }
-
 
     //增加登录用户
     public int addUser(LUser user) {

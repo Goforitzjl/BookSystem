@@ -15,7 +15,7 @@ public class ThridArea extends JFrame {
     public JTextField searchText;
     public BookTableModel tableModel;
     public JTable table;
-    public BooksDao bd = new BooksDao();
+    public BooksDao bd = BooksDao.getInstance();
     public Font font1 = new Font("黑体", Font.BOLD, 18);
     public Font font2 = new Font("宋体", Font.PLAIN, 16);
     public Vector<String> columnNames = new Vector<>();
@@ -98,7 +98,7 @@ public class ThridArea extends JFrame {
         columnNames.add("创建日期");
         columnNames.add("更新日期");
 
-        BookTableModel tableModel1 = new BookTableModel(TableDao.getValues(), columnNames);
+        BookTableModel tableModel1 = new BookTableModel(BookTableHandle.getValues(), columnNames);
 //        System.out.println(tableModel1.getRowCount());
         return tableModel1;
     }
@@ -133,7 +133,7 @@ public class ThridArea extends JFrame {
                     String keyword = searchText.getText();
                     Vector<Book> books = bd.selectBook(keyword);
                     System.out.println(books.size());
-                    Vector<Vector<String>> data = TableDao.convertTable(books);
+                    Vector<Vector<String>> data = BookTableHandle.convertTable(books);
                     System.out.println(data);
                     System.out.println(tableModel.getRowCount());
                     tableModel.setDataVector(data,columnNames);

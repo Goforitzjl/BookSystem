@@ -40,6 +40,11 @@ public class Book {
         this.update_time = update_time;
     }
 
+    public Book(String book_name, String barcode) {
+        this.book_name = book_name;
+        this.barcode = barcode;
+    }
+
     public Book(int book_id) {
         this.book_id = book_id;
     }

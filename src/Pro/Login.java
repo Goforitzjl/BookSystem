@@ -90,10 +90,10 @@ public class Login extends JFrame {
         LUser user = new LUser();
         user.setName(iname.getText());
         user.setPassword(String.valueOf(ipwd.getPassword()));
-        boolean flag = new UsersDao().checkUser(user);
+        boolean flag = new LusersDao().checkUser(user);
         if (flag) {
             this.dispose();
-            new Index().start();
+            Index.getInstance().start();
             System.out.println("登录成功");
         } else {
             JOptionPane.showMessageDialog(null, "密码或用户错误", "", JOptionPane.ERROR_MESSAGE);

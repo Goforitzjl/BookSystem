@@ -140,7 +140,7 @@ public class Register extends JDialog {
         user.setTel(itel.getText());
         user.setAddress(iaddress.getText());
         user.setIs_superuser(false);
-        UsersDao uo = new UsersDao();
+        LusersDao uo = new LusersDao();
         if (uo.addUser(user) == 1) {
 
             JOptionPane.showMessageDialog(null, "注册成功", "", JOptionPane.PLAIN_MESSAGE);

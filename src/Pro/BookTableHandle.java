@@ -3,12 +3,12 @@ package Pro;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class TableDao {
+public class BookTableHandle {
 
 
 
     public static Vector<Vector<String>> getValues(){
-        Vector<Book> bookList=new BooksDao().getBookList();
+        Vector<Book> bookList=BooksDao.getInstance().getBookList();
         Vector<Vector<String>> tableValues=convertTable(bookList);
         return tableValues;
     }

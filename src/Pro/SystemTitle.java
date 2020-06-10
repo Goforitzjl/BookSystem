@@ -3,9 +3,9 @@ package Pro;
 import javax.swing.*;
 import java.awt.*;
 
-public class FirstArea extends JFrame{
+public class SystemTitle extends JFrame{
 
-    public JPanel getFirstArea(){
+    public JPanel getSysTitle(){
         JPanel jp=new JPanel(new BorderLayout());
 
         final Font font = new Font("黑体", Font.BOLD, 35);
